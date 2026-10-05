@@ -1,0 +1,989 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bindhu DL | CSE Portfolio</title>
+
+    <meta
+        name="description"
+        content="Personal portfolio of Bindhu DL, a 3rd Semester Computer Science and Engineering student."
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #08111f;
+            color: #e8f0fa;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1080px, 90%);
+            margin: auto;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(8, 17, 31, 0.92);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            min-height: 68px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #4fd1c5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 26px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b9c8d9;
+            font-size: 0.94rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4fd1c5;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(79, 209, 197, 0.13),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 15% 80%,
+                    rgba(56, 189, 248, 0.08),
+                    transparent 30%
+                ),
+                #08111f;
+        }
+
+        .hero-content {
+            max-width: 760px;
+            padding-top: 70px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 7px 14px;
+            margin-bottom: 22px;
+
+            border: 1px solid rgba(79, 209, 197, 0.35);
+            border-radius: 50px;
+
+            color: #4fd1c5;
+            background: rgba(79, 209, 197, 0.06);
+
+            font-size: 0.84rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #4fd1c5;
+        }
+
+        .hero h2 {
+            color: #b9c8d9;
+            font-size: clamp(1.25rem, 3vw, 1.8rem);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #9fb0c4;
+            max-width: 700px;
+            font-size: 1.05rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 19px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            background: #4fd1c5;
+            color: #07121f;
+        }
+
+        .btn-primary:hover {
+            background: #6ee7da;
+        }
+
+        .btn-secondary {
+            border: 1px solid #294056;
+            color: #dce8f4;
+        }
+
+        .btn-secondary:hover {
+            border-color: #4fd1c5;
+            color: #4fd1c5;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            color: #4fd1c5;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: #9fb0c4;
+            max-width: 700px;
+            margin-bottom: 38px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        #about {
+            background: #0a1627;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #b8c7d8;
+            font-size: 1.02rem;
+            margin-bottom: 17px;
+        }
+
+        .student-card {
+            padding: 27px;
+
+            background: #0e1d31;
+            border: 1px solid #1d344d;
+            border-radius: 15px;
+        }
+
+        .student-card h3 {
+            color: #4fd1c5;
+            margin-bottom: 18px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+
+            padding: 12px 0;
+            border-bottom: 1px solid #1d344d;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #8295aa;
+        }
+
+        .info-value {
+            text-align: right;
+            color: #e8f0fa;
+            font-weight: 600;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 125px 1fr;
+            gap: 24px;
+
+            padding: 25px;
+
+            background: #0d1b2d;
+            border: 1px solid #1b334b;
+            border-radius: 14px;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(79, 209, 197, 0.5);
+        }
+
+        .project-number {
+            color: #4fd1c5;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding-top: 4px;
+        }
+
+        .project-content h3 {
+            font-size: 1.28rem;
+            margin-bottom: 8px;
+        }
+
+        .project-content p {
+            color: #9fb0c4;
+            font-size: 0.96rem;
+            margin-bottom: 13px;
+        }
+
+        .project-link {
+            color: #4fd1c5;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .no-link {
+            color: #71859b;
+            font-size: 0.88rem;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        #skills {
+            background: #0a1627;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+        }
+
+        .skill {
+            padding: 10px 16px;
+
+            background: #0e1d31;
+            border: 1px solid #203951;
+            border-radius: 50px;
+
+            color: #cbd8e6;
+            font-size: 0.9rem;
+
+            transition: 0.3s ease;
+        }
+
+        .skill:hover {
+            border-color: #4fd1c5;
+            color: #4fd1c5;
+            transform: translateY(-2px);
+        }
+
+        .goal-box {
+            margin-top: 38px;
+            padding: 25px;
+
+            border-left: 3px solid #4fd1c5;
+            background: #0d1b2d;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .goal-box p {
+            color: #b9c8d9;
+            font-size: 1rem;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        #contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-box p {
+            color: #9fb0c4;
+            margin-bottom: 25px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 23px 0;
+            text-align: center;
+
+            border-top: 1px solid #172b40;
+
+            color: #71859b;
+            font-size: 0.88rem;
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+
+            transition:
+                opacity 0.65s ease,
+                transform 0.65s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .nav-container {
+                flex-direction: column;
+                padding: 14px 0;
+                gap: 9px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .info-row {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .info-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav>
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
+                Bindhu<span>DL</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main>
+
+        <!-- Hero -->
+
+        <section class="hero" id="home">
+
+            <div class="container">
+
+                <div class="hero-content reveal">
+
+                    <div class="tag">
+                        Computer Science and Engineering
+                    </div>
+
+                    <h1>
+                        Bindhu <span>DL</span>
+                    </h1>
+
+                    <h2>
+                        3rd Semester CSE Student
+                    </h2>
+
+                    <p>
+                        I am interested in programming, software development,
+                        problem solving, and learning new technologies.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#projects" class="btn btn-primary">
+                            View Activities
+                        </a>
+
+                        <a href="#about" class="btn btn-secondary">
+                            About Me
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about">
+
+            <div class="container">
+
+                <div class="about-grid">
+
+                    <div class="about-text reveal">
+
+                        <div class="section-label">
+                            01 — About
+                        </div>
+
+                        <h2 class="section-title">
+                            About Me
+                        </h2>
+
+                        <p>
+                            I am a Computer Science and Engineering student
+                            interested in programming, software development,
+                            problem solving, and learning new technologies.
+                        </p>
+
+                        <p>
+                            I am building my technical skills through practical
+                            activities involving C/C++, Git, GitHub, developer
+                            collaboration tools, and coding problem-solving
+                            platforms.
+                        </p>
+
+                    </div>
+
+                    <div class="student-card reveal">
+
+                        <h3>Student Information</h3>
+
+                        <div class="info-row">
+                            <span class="info-label">Name</span>
+                            <span class="info-value">Bindhu DL</span>
+                        </div>
+
+                        <div class="info-row">
+                            <span class="info-label">Semester</span>
+                            <span class="info-value">3rd Semester</span>
+                        </div>
+
+                        <div class="info-row">
+                            <span class="info-label">Branch</span>
+                            <span class="info-value">
+                                Computer Science and Engineering
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section id="projects">
+
+            <div class="container">
+
+                <div class="reveal">
+
+                    <div class="section-label">
+                        02 — Projects
+                    </div>
+
+                    <h2 class="section-title">
+                        Activities 1–4
+                    </h2>
+
+                    <p class="section-description">
+                        Practical activities involving programming,
+                        version control, collaboration, and
+                        problem-solving practice.
+                    </p>
+
+                </div>
+
+
+                <div class="projects-list">
+
+                    <!-- Activity 1 -->
+
+                    <article class="project-card reveal">
+
+                        <div class="project-number">
+                            ACTIVITY 01
+                        </div>
+
+                        <div class="project-content">
+
+                            <h3>VS Code Setup</h3>
+
+                            <p>
+                                I set up my programming environment using
+                                Visual Studio Code and configured the tools
+                                required for C/C++ development, then created
+                                and tested a basic Hello World program.
+                            </p>
+
+                            <a
+                                href="https://github.com/bindhudl38-afk/Activity-1-C-CPP-Setup"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub Repository →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Activity 2 -->
+
+                    <article class="project-card reveal">
+
+                        <div class="project-number">
+                            ACTIVITY 02
+                        </div>
+
+                        <div class="project-content">
+
+                            <h3>Git & GitHub Setup</h3>
+
+                            <p>
+                                I learned the basic Git and GitHub workflow by
+                                practicing repositories, commits, connecting
+                                local work to GitHub, and pushing project files
+                                to a public repository.
+                            </p>
+
+                            <span class="no-link">
+                                No GitHub link provided
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Activity 3 -->
+
+                    <article class="project-card reveal">
+
+                        <div class="project-number">
+                            ACTIVITY 03
+                        </div>
+
+                        <div class="project-content">
+
+                            <h3>GitLens & Live Share</h3>
+
+                            <p>
+                                I explored GitLens and Live Share in Visual
+                                Studio Code, practiced viewing Git history and
+                                file blame information, and used Live Share for
+                                collaborative programming.
+                            </p>
+
+                            <span class="no-link">
+                                No GitHub link provided
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Activity 4 -->
+
+                    <article class="project-card reveal">
+
+                        <div class="project-number">
+                            ACTIVITY 04
+                        </div>
+
+                        <div class="project-content">
+
+                            <h3>LeetCode Practice Repository</h3>
+
+                            <p>
+                                I created a GitHub repository to document my
+                                LeetCode problem-solving practice.
+                            </p>
+
+                            <a
+                                href="https://github.com/bindhudl38-afk/leetcode-solutions"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub Repository →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILLS
+        ========================== -->
+
+        <section id="skills">
+
+            <div class="container">
+
+                <div class="reveal">
+
+                    <div class="section-label">
+                        03 — Skills
+                    </div>
+
+                    <h2 class="section-title">
+                        Technical Skills
+                    </h2>
+
+                    <p class="section-description">
+                        Technical skills and tools provided in my portfolio
+                        information.
+                    </p>
+
+                </div>
+
+
+                <div class="skills-container reveal">
+
+                    <span class="skill">C</span>
+                    <span class="skill">C++</span>
+                    <span class="skill">Problem solving</span>
+                    <span class="skill">Visual Studio Code</span>
+                    <span class="skill">Git</span>
+                    <span class="skill">GitHub</span>
+                    <span class="skill">GitLens</span>
+                    <span class="skill">Live Share</span>
+                    <span class="skill">LeetCode</span>
+                    <span class="skill">
+                        Basic version control and collaborative development
+                    </span>
+
+                </div>
+
+
+                <div class="goal-box reveal">
+
+                    <div class="section-label">
+                        Career / Learning Goal
+                    </div>
+
+                    <p>
+                        My goal is to strengthen my programming and
+                        problem-solving skills, build practical software
+                        projects, and develop a strong GitHub portfolio.
+                        I want to improve my understanding of data structures,
+                        algorithms, and software development to prepare for
+                        internships, placements, and future technology
+                        opportunities.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact">
+
+            <div class="container">
+
+                <div class="contact-box reveal">
+
+                    <div class="section-label">
+                        04 — Contact
+                    </div>
+
+                    <h2 class="section-title">
+                        GitHub
+                    </h2>
+
+                    <p>
+                        The GitHub repositories provided for my activities
+                        are available below.
+                    </p>
+
+                    <div class="contact-buttons">
+
+                        <a
+                            href="https://github.com/bindhudl38-afk/Activity-1-C-CPP-Setup"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            Activity 1 Repository
+                        </a>
+
+                        <a
+                            href="https://github.com/bindhudl38-afk/leetcode-solutions"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-primary"
+                        >
+                            LeetCode Repository
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+                © 2026 Bindhu DL · Computer Science and Engineering
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        revealElements.forEach((element) => {
+            observer.observe(element);
+        });
+
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+
+            link.addEventListener("click", function () {
+
+                const target =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
+
+                if (target) {
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
